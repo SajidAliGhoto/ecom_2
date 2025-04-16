@@ -50,10 +50,10 @@ const DropdownLinks = [
 ];
 
 
-const Navbar=()=> {
+const Navbar=({handleOrderPopup})=> {
 
     return (<div className="flex justify-between items-center shadow-md bg-white  duration-200 relative
-    flex-col dark:bg-gray-900 dark:text-white
+    flex-col dark:bg-gray-900 dark:text-white z-20
     ">
             {/*//upper navbar*/}
 
@@ -102,6 +102,7 @@ const Navbar=()=> {
                         <button
                             className='bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-200 text-white py-1 px-4
                      rounded-full flex items-center justify-center gap-3 group'
+                        onClick={handleOrderPopup}
                         >
                             <span className='group-hover:block hidden transition-all duration-200'>Order</span>
                             <FaCartShopping className='text-xl text-white drop-shadow-sm cursor-pointer'/>
@@ -141,7 +142,7 @@ const Navbar=()=> {
                         '>
                             <ul>
                                 {DropdownLinks.map((data) => (
-                                    <li id={data.id}>
+                                    <li key={data.id}>
                                         <a href={data.link}
                                            className='block w-full hover:bg-amber-100 p-1 rounded-md'
                                         >

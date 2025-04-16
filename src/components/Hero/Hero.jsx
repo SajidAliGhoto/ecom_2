@@ -36,10 +36,10 @@ import Slider from 'react-slick';
        arrows: false,
   };
 
-const Hero = () => {
+const Hero = ({handleOrderPopup}) => {
     return(
         <div className=' relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex items-center justify-center
-        dark:bg-gray-950 dark:text-white duration-200 
+        dark:bg-gray-950 dark:text-white duration-200 z-10
         '>
             {/*Background pattern*/}
             <div
@@ -80,6 +80,7 @@ const Hero = () => {
                             <button
                             className='bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-200 text-white py-1 px-4
                                 rounded-full flex'
+                            onClick={() => handleOrderPopup()}
                             >
                                 Order Now
                             </button>

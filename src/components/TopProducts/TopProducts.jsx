@@ -28,7 +28,7 @@ const ProductsData = [
   },
 ];
 
-const TopProducts = ()=>{
+const TopProducts = ({handleOrderPopup})=>{
     return <div className=" dark:bg-gray-800 dark:text-white pb-10 pt-10 bg-white min-h-screen">
 
         {/* Header Section */}
@@ -45,7 +45,7 @@ const TopProducts = ()=>{
                 >
                     {/* Products List  */}
                     { ProductsData.map((data)=>(
-                        <div className="
+                        <div key={data.id} className="
                         max-h-[300px] max-w-[300px]
                         rounded-2xl bg-white dark:bg-gray-700 hover:bg-black/80
                         hover:text-white dark:hover:bg-primary shadow-xl relative duration-[300] group flex flex-col items-center justify-center
@@ -72,6 +72,7 @@ const TopProducts = ()=>{
                                     <h1 className="text-xl text-black font-bold group-hover:text-white ">{data.title}</h1>
                                     <p className="text-sm text-gray-500 group-hover:text-white duration-300 line-clamp-2 mb-2">{data.description}</p>
                                     <button
+                                        onClick={()=>handleOrderPopup()}
                                         className='bg-primary transition-all duration-200 text-white py-1 px-4
                                         rounded-full flex group-hover:bg-white group-hover:text-primary !important'>
                                             Order Now

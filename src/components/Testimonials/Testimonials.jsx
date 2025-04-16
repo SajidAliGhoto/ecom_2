@@ -95,7 +95,7 @@ const Testimonials = () => {
                                     <h1 className='text-black dark:text-white font-bold text-xl mt-2'>{data.name}</h1>
                                 </div>
                                 
-                                <p class="text-black/20 text-9xl font-serif absolute top-0 right-0">,,</p>
+                                <p className="text-black/20 text-9xl font-serif absolute top-0 right-0">,,</p>
                                 
                             </div>
                           </div>
