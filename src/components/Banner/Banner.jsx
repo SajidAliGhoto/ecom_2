@@ -10,7 +10,8 @@ import { GiFoodTruck } from 'react-icons/gi';
 const Banner = () => {
 
     return (
-        <div className="container min-h-[550px] flex items-center justify-center py-12 sm:py-0">
+        <div className=' dark:bg-gray-800 dark:text-white bg-white min-h-screen'>
+        <div className="container min-h-[550px] flex items-center justify-center sm:py-0">
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 items-center'>
                 {/* Image Section */}
                 <div data-aos='zoom-in'>
@@ -20,7 +21,7 @@ const Banner = () => {
                 </div>
                 {/* Text Section */}
                 <div className='flex flex-col justify-center gap-6 sm:pt-0' >
-                    <h1 className='text-3xl font-bold text-black sm:text-4xl' data-aos="fade-up" data-aos-delay='100'>Winter Sale upto 50% Off</h1>
+                    <h1 className='text-3xl font-bold text-black dark:text-white sm:text-4xl' data-aos="fade-up" data-aos-delay='100'>Winter Sale upto 50% Off</h1>
                     <p className='text-gray-500 text-sm tracking-wide leading-5' data-aos="fade-up" data-aos-delay='200'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio</p>
                     <div className='flex flex-col gap-4'>
                         <div className='flex items-center gap-4 ' data-aos='fade-up' data-aos-delay='300'>
@@ -42,6 +43,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
     }

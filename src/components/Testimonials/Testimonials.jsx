@@ -69,12 +69,13 @@ import Slider from 'react-slick';
   
 const Testimonials = () => {
     return(
-        <div className="py-10 mb-10">
+      <div className=' dark:bg-gray-800 dark:text-white bg-white'>
+        <div className="py-10">
             <div className="container">
                 {/* Header Section */}
-                <div className="container text-center mb-24">
+                <div className="container text-center mb-10">
                 <p className="text-md text-secondary" data-aos="fade-up">What our customers are saying</p>
-                <h1 className=" text-black text-3xl font-bold aos-init aos-animate" data-aos="fade-up">Testimonials</h1>
+                <h1 className=" text-black dark:text-white text-3xl font-bold aos-init aos-animate" data-aos="fade-up">Testimonials</h1>
                 <p className="text-slate-400 text-xs" data-aos="fade-up">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit asperiores modi Sit asperiores modi</p>
                 </div>
                 
@@ -91,7 +92,7 @@ const Testimonials = () => {
                                 
                                 <div >
                                     <p className="text-gray-500 text-sm">{data.text}</p>
-                                    <h1 className='text-black font-bold text-xl mt-2'>{data.name}</h1>
+                                    <h1 className='text-black dark:text-white font-bold text-xl mt-2'>{data.name}</h1>
                                 </div>
                                 
                                 <p class="text-black/20 text-9xl font-serif absolute top-0 right-0">,,</p>
@@ -104,6 +105,7 @@ const Testimonials = () => {
 
             </div>
         </div>
+      </div>
     );
 }
 export default Testimonials;

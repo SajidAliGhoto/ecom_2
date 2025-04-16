@@ -29,17 +29,17 @@ const ProductsData = [
 ];
 
 const TopProducts = ()=>{
-    return <div>
+    return <div className=" dark:bg-gray-800 dark:text-white pb-10 pt-10 bg-white min-h-screen">
 
         {/* Header Section */}
         <div className="container text-left mb-24">
                 <p className="text-md text-secondary" data-aos='fade-up'>Top Rated Products</p>
-                <h1 className=" text-black text-3xl font-bold"data-aos='fade-up'>The Best Products</h1>
+                <h1 className=" text-black dark:text-white text-3xl font-bold"data-aos='fade-up'>The Best Products</h1>
                 <p className="text-slate-400 text-xs"data-aos='fade-up'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit asperiores modi Sit asperiores modi</p>
         </div>
 
         {/* Body Section */}
-        <div className="container mx-auto mb-10">
+        <div className="container mx-auto">
                 <div className="grid place-items-center gap-5"
                     style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}
                 >
@@ -47,7 +47,7 @@ const TopProducts = ()=>{
                     { ProductsData.map((data)=>(
                         <div className="
                         max-h-[300px] max-w-[300px]
-                        rounded-2xl bg-white dark:bg-gray-800 hover:bg-black/80
+                        rounded-2xl bg-white dark:bg-gray-700 hover:bg-black/80
                         hover:text-white dark:hover:bg-primary shadow-xl relative duration-[300] group flex flex-col items-center justify-center
                         "
                             data-aos='fade-up'

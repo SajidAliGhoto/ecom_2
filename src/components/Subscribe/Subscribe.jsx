@@ -17,8 +17,9 @@ const BannerImg = {
 const Suscribe = () => {
 
   return (
+    <div className=" dark:bg-gray-800 dark:text-white bg-white">
     <div data-aos='zoom-in'
-    className=" mb-20 bg-gray-100 dark:bg-gray-800 text-white"
+    className=" bg-gray-100"
       style={BannerImg}
     >
       <div className="container py-10 backdrop-blur-sm flex items-center justify-center mx-auto">
@@ -30,6 +31,7 @@ const Suscribe = () => {
             className="w-full p-3 aos-init aos-animate"></input>
         </div>
       </div>
+    </div>
     </div>
   );
 }

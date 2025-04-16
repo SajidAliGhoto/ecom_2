@@ -39,7 +39,7 @@ import Slider from 'react-slick';
 const Hero = () => {
     return(
         <div className=' relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex items-center justify-center
-        dark:bg-gray-900 dark:text-white duration-200 
+        dark:bg-gray-950 dark:text-white duration-200 
         '>
             {/*Background pattern*/}
             <div

@@ -48,12 +48,12 @@ const ProductsData = [
   
 const Products = () => {
     return (
-        <div className="mt-14 mb-12">
+        <div className="pt-10 dark:bg-gray-800 dark:text-white bg-white min-h-screen">
             {/* Header Section */}
             <div className="container text-center mb-10">
-                <p className="text-md text-secondary">Top Selling Products</p>
-                <h1 className=" text-black text-3xl font-bold aos-init aos-animate">Products</h1>
-                <p className="text-slate-400 text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit asperiores modi Sit asperiores modi</p>
+                <p className="text-md text-secondary" data-aos='fade-up'>Top Selling Products</p>
+                <h1 className=" text-black dark:text-white text-3xl font-bold" data-aos='fade-up'>Products</h1>
+                <p className="text-slate-400 text-xs" data-aos='fade-up'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit asperiores modi Sit asperiores modi</p>
             </div>
 
             {/* Products Section */}
