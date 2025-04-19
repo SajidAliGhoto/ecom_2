@@ -40,7 +40,7 @@ const TopProducts = ({handleOrderPopup})=>{
 
         {/* Body Section */}
         <div className="container mx-auto">
-                <div className="grid place-items-center gap-5"
+                <div className="grid place-items-center gap-[5rem]"
                     style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}
                 >
                     {/* Products List  */}

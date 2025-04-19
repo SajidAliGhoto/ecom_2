@@ -1,6 +1,7 @@
 import {FaCartShopping} from "react-icons/fa6";
 import {FaCaretDown} from 'react-icons/fa';
 import DarkMode from "./DarkMode.jsx";
+import Logo from "../../assets/logo.png";
 
 
 const Manu = [
@@ -61,7 +62,7 @@ const Navbar=({handleOrderPopup})=> {
                 <div className="container flex items-center justify-between">
                     <div>
                         <a href="/" className="font-bold text-2xl sm:text-3xl flex gap-2">
-                            <img src="src/assets/logo.png" alt="Logo"
+                            <img src={Logo} alt="Logo"
                                  className='w-10'
                             />
                             Shopsy

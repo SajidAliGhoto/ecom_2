@@ -69,11 +69,13 @@ const Products = () => {
                             src={data.img}
                             alt={data.title}    
                             />
-                            <h1 className="font-semibold">{data.title}</h1>
-                            <p>{data.color}</p>
-                            <div className="flex items-center gap-1">
+                            <div className="flex flex-col items-center justify-center sm:text-center md:text-left md:items-start">
+                            <h1 className="font-semibold text-xl sm:text-lg">{data.title}</h1>
+                            <p className="text-xl sm:text-lg">{data.color}</p>
+                            <div className="flex items-center gap-1 sm:text-xl">
                                 <FaStar className="text-yellow-400"/>
-                                <span>{data.rating}</span>
+                                <span className="text-xl sm:text-lg">{data.rating}</span>
+                            </div>
                             </div>
                         </div>
                     ))}
