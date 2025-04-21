@@ -9,7 +9,6 @@ const DarkMode=()=>{
     );
 
     const element = document.documentElement;
-    console.log(element);
 
     React.useEffect(()=>{
         if (theme==='dark'){

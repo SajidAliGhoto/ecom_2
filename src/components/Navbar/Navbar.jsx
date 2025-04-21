@@ -1,34 +1,37 @@
 import {FaCartShopping} from "react-icons/fa6";
 import {FaCaretDown} from 'react-icons/fa';
 import DarkMode from "./DarkMode.jsx";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/logo.png"; 
+// {When you import the logo as a module, the bundler (Vite) processes the image and ensures the correct path is used in the final build. This way, the logo will load correctly both locally and on the deployed site.}
+import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
 
 
 const Manu = [
     {
         id: 1,
         name: "Home",
-        link: "/#",
+        link: "home",
     },
     {
         id: 2,
         name: "Top Rated",
-        link: "/#services",
+        link: "top-rated",
     },
     {
         id: 3,
         name: "Kids Wear",
-        link: "/#",
+        link: "kids-wear",
     },
     {
         id: 4,
         name: "Mens Wear",
-        link: "/#",
+        link: "mens-wear",
     },
     {
         id: 5,
         name: "Electronics",
-        link: "/#",
+        link: "electronics",
     },
 ];
 
@@ -36,22 +39,24 @@ const DropdownLinks = [
     {
         id: 1,
         name: "Trending Products",
-        link: "/#",
+        link: "trending-products",
     },
     {
         id: 2,
         name: "Best Selling",
-        link: "/#",
+        link: "best-selling",
     },
     {
         id: 3,
         name: "Top Rated",
-        link: "/#",
+        link: "top-rated",
     },
 ];
 
 
-const Navbar=({handleOrderPopup})=> {
+const Navbar=({handleOrderPopup,isLoggedIn})=> {
+
+    const navigate = useNavigate();
 
     return (<div className="flex justify-between items-center shadow-md bg-white  duration-200 relative
     flex-col dark:bg-gray-900 dark:text-white z-20
@@ -103,9 +108,12 @@ const Navbar=({handleOrderPopup})=> {
                         <button
                             className='bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-200 text-white py-1 px-4
                      rounded-full flex items-center justify-center gap-3 group'
-                        onClick={handleOrderPopup}
+                        onClick={
+                            isLoggedIn ? ()=> navigate('cart'): () => handleOrderPopup}
                         >
-                            <span className='group-hover:block hidden transition-all duration-200'>Order</span>
+                            <span className='group-hover:block hidden transition-all duration-200'
+                            
+                            >Order</span>
                             <FaCartShopping className='text-xl text-white drop-shadow-sm cursor-pointer'/>
                         </button>
 
@@ -122,11 +130,14 @@ const Navbar=({handleOrderPopup})=> {
                 <ul className='sm:flex hidden items-center gap-4 py-2'>
                     {Manu.map((data) => (
                         <li key={data.id}>
-                            <a href={data.link}
-                               className='inline-block px-4 hover:text-amber-500'
+                            <Link
+                                to={data.link}
+                                smooth={true}
+                                duration={500}
+                                className="inline-block px-4 hover:text-amber-500 cursor-pointer"
                             >
                                 {data.name}
-                            </a>
+                            </Link>
                         </li>
                     ))}
 
@@ -144,11 +155,14 @@ const Navbar=({handleOrderPopup})=> {
                             <ul>
                                 {DropdownLinks.map((data) => (
                                     <li key={data.id}>
-                                        <a href={data.link}
+                                        <Link
+                                            to={data.link}
+                                            smooth={true}
+                                            duration={500}
                                            className='block w-full hover:bg-amber-100 p-1 rounded-md'
                                         >
                                             {data.name}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

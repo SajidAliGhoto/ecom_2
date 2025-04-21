@@ -1,35 +1,17 @@
 import React from "react";
-import Img1 from "../../assets/shirt/shirt.png";
-import Img2 from "../../assets/shirt/shirt2.png";
-import Img3 from "../../assets/shirt/shirt3.png";
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import ProductsData from "../../data/products.js";
 
-const ProductsData = [
-  {
-    id: 1,
-    img: Img1,
-    title: "Casual Wear",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 2,
-    img: Img2,
-    title: "Printed shirt",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 3,
-    img: Img3,
-    title: "Women shirt",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-];
+const TopProducts = ({handleOrderPopup,addToCart})=>{
+    
+    const navigate = useNavigate();
 
-const TopProducts = ({handleOrderPopup})=>{
-    return <div className=" dark:bg-gray-800 dark:text-white pb-10 pt-10 bg-white min-h-screen">
+    const showDetails = (id) => {
+        navigate(`/product/${id}`);
+    }
+    
+    return <div id="top-rated" className=" dark:bg-gray-800 dark:text-white pb-10 pt-10 bg-white min-h-screen">
 
         {/* Header Section */}
         <div className="container text-left mb-24">
@@ -52,6 +34,7 @@ const TopProducts = ({handleOrderPopup})=>{
                         "
                             data-aos='fade-up'
                             data-aos-delay={data.aosDelay}
+                            onClick={()=>showDetails(data.id)}
                         >
                             <div>
                             <img className="max-w-[140px] block max-auto transform -translate-y-20 
@@ -72,7 +55,10 @@ const TopProducts = ({handleOrderPopup})=>{
                                     <h1 className="text-xl text-black font-bold group-hover:text-white ">{data.title}</h1>
                                     <p className="text-sm text-gray-500 group-hover:text-white duration-300 line-clamp-2 mb-2">{data.description}</p>
                                     <button
-                                        onClick={()=>handleOrderPopup()}
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            addToCart(data);
+                                        }}
                                         className='bg-primary transition-all duration-200 text-white py-1 px-4
                                         rounded-full flex group-hover:bg-white group-hover:text-primary !important'>
                                             Order Now
