@@ -1,11 +1,10 @@
 import { FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+
 import ProductsData from "../../data/ratedProducts.js";
 import { useParams } from "react-router-dom";
   
-const Products = ({addToCart}) => {
+const Products = ({addToCart ,orderId,setOrderId,navigate}) => {
   
-  const navigate = useNavigate();
   const id = useParams();
   const showDetails = (id) => {
     navigate(`/product/${id}`);
@@ -48,17 +47,30 @@ const Products = ({addToCart}) => {
                               </div>
                             </div>
 
-                            <button type="submit" className='px-3 bg-primary transition-all duration-200 text-white py-1
-                            rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
-                            onClick={(event)=>{event.stopPropagation();
-                              addToCart(data);
-                            } }
-                            >Order Now</button>
+                            {orderId === data.id ?
+
+                              <div className="flex items-center justify-between w-full">
+                              <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                                  onClick={(e)=>{e.stopPropagation(); addToCart(data)}}
+                              >Add To Cart</button>
+                              <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                                  onClick={(e)=> {e.stopPropagation(); addToCart(data); navigate('/cart')} }
+                              >Buy Now</button>
+                              </div>
+                              :
+
+                              <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                                  onClick={(e)=>{e.stopPropagation(); setOrderId(data.id)}}
+                              >Order Now</button>
+
+                            }
 
                         </div>
                     ))}
                 </div>
-                <button className="mt-10 w-[100] h-[50] p-1.5 bg-primary text-white rounded-md cursor-pointer">View All Button</button>
+                <button className="mt-10 w-[100] h-[50] p-1.5 px-2 bg-primary text-white rounded-full cursor-pointer"
+                  onClick={()=> navigate('/products')}
+                >View All Products</button>
             </div>
         </div>
     );

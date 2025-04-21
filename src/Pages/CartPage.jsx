@@ -1,6 +1,6 @@
 import React from 'react';
 import Cart from '../components/Cart and Checkout/Cart.jsx';
-const Checkout = ({cartItems,addToCart,removeFromCart,onCheckout}) => {
+const Checkout = ({cartItems,addToCart,removeFromCart,onCheckout,clearCart}) => {
     
     return (
         <>
@@ -9,6 +9,7 @@ const Checkout = ({cartItems,addToCart,removeFromCart,onCheckout}) => {
                 addToCart={addToCart}
                 removeFromCart={removeFromCart}
                 onCheckout={onCheckout}
+                clearCart={clearCart}
                 
             />
         </>

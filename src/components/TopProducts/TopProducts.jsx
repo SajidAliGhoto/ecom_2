@@ -1,11 +1,10 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+
 import ProductsData from "../../data/products.js";
 
-const TopProducts = ({handleOrderPopup,addToCart})=>{
+const TopProducts = ({handleOrderPopup,addToCart,orderId,setOrderId,navigate})=>{
     
-    const navigate = useNavigate();
 
     const showDetails = (id) => {
         navigate(`/product/${id}`);
@@ -54,15 +53,23 @@ const TopProducts = ({handleOrderPopup,addToCart})=>{
 
                                     <h1 className="text-xl text-black font-bold group-hover:text-white ">{data.title}</h1>
                                     <p className="text-sm text-gray-500 group-hover:text-white duration-300 line-clamp-2 mb-2">{data.description}</p>
-                                    <button
-                                        onClick={(event) => {
-                                            event.stopPropagation();
-                                            addToCart(data);
-                                        }}
-                                        className='bg-primary transition-all duration-200 text-white py-1 px-4
-                                        rounded-full flex group-hover:bg-white group-hover:text-primary !important'>
-                                            Order Now
-                                    </button>
+                                    {orderId === data.id ?
+
+                                    <div className="flex items-center gap-5">
+                                    <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                                        onClick={(e)=> {e.stopPropagation(); addToCart(data)}}
+                                    >Add To Cart</button>
+                                    <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                                        onClick={(e)=> {e.stopPropagation(); addToCart(data); navigate('/cart')} }
+                                    >Buy Now</button>
+                                    </div>
+                                    :
+
+                                    <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                                        onClick={(e)=>{e.stopPropagation(); setOrderId(data.id)}}
+                                    >Order Now</button>
+
+                                    }
 
                                 </div>
                             </div>

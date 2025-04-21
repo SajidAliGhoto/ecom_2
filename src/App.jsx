@@ -8,6 +8,7 @@ import HomePage from './Pages/HomePage.jsx';
 import ProductDetails from './Pages/ProductDetailPage.jsx';
 import CartPage from './Pages/CartPage.jsx';
 import CheckoutPage from './Pages/CheckoutPage.jsx';
+import ProductsPage from './Pages/ProductsPage.jsx';
 function App() {
     React.useEffect(()=>{
         AOS.init({
@@ -79,6 +80,12 @@ function App() {
                     removeFromCart={removeFromCart}
                     clearCart={clearCart}
                     />}
+                />
+
+                <Route path='/products'
+                        element={<ProductsPage
+                        addToCart={addToCart}
+                        />}
                 />
 
             </Routes>

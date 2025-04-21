@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
-const Cart = ({cartItems,addToCart,removeFromCart}) => {
+const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
 
     const navigate = useNavigate();
 
@@ -57,6 +57,9 @@ const Cart = ({cartItems,addToCart,removeFromCart}) => {
                         <button className='bg-primary transition-all duration-200 text-white py-1 px-4 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap'
                             onClick={() => navigate('/checkout')}>
                         Checkout</button>
+                        <button className='bg-primary transition-all duration-200 text-white py-1 px-4 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap'
+                            onClick={() => clearCart()}>
+                        Clear Cart</button>
                 </div>
             </div>
         </div> 
