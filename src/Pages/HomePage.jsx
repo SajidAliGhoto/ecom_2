@@ -17,7 +17,7 @@ const HomePage = ({addToCart}) => {
     const navigate = useNavigate();
 
     return (
-        <>
+        <div id="home">
             <Hero/>
             <TopProducts addToCart={addToCart} orderId={orderId} setOrderId={setOrderId} navigate={navigate}/>
             <Banner/>
@@ -26,7 +26,7 @@ const HomePage = ({addToCart}) => {
             <Testimonials/>
             <Footer/>
             <OrderNowPopup/>
-        </>
+        </div>
     );
 }
 export default HomePage;

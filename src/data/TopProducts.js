@@ -3,6 +3,9 @@ import Img1 from "../assets/shirt/shirt.png";
 import Img2 from "../assets/shirt/shirt2.png";
 import Img3 from "../assets/shirt/shirt3.png";
 
+import reviewer7 from "../assets/reviewer/reviewer7.jpg"
+import reviewer8 from "../assets/reviewer/reviewer8.jpg"
+import reviewer9 from "../assets/reviewer/reviewer9.jpg"
 
 
   
@@ -21,7 +24,7 @@ const ProductsData = [
       {
         reviewerName: "John",
         comment: "Nice and comfy, good for everyday wear.",
-        img: "reviewer7.jpg", // Replace with actual image path
+        img: reviewer7
       },
     ],
   },
@@ -39,7 +42,7 @@ const ProductsData = [
       {
         reviewerName: "Sophia",
         comment: "The print is beautiful, but fabric could be better.",
-        img: "reviewer8.jpg", // Replace with actual image path
+        img: reviewer8
       },
     ],
   },
@@ -57,7 +60,7 @@ const ProductsData = [
       {
         reviewerName: "Olivia",
         comment: "Very elegant, a great addition to my wardrobe.",
-        img: "reviewer9.jpg", // Replace with actual image path
+        img: reviewer9
       },
     ],
   },

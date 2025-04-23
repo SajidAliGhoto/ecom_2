@@ -1,39 +1,31 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { IoCloseCircleOutline } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
-import {props } from 'react';
 
-
-const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price*item.quantity, 0);
-}
-const Checkout = ({ cartItems =[], removeFromCart}) => {
+const Checkout = ({ cartItems =[] , setOpenCheckout}) => {
     // adding default value to cartItems to avoid undefined error cartItems =[]
-    const navigate = useNavigate();
-    console.log(getTotalPrice);
-    
-    return (
+
+   
+        return (
         
         <div id="checkout" className=" dark:bg-gray-800 dark:text-white bg-white min-h-screen pt-10 pb-10 overflow-y-auto h-full">
             <div className="container text-center mb-10">
                 <div className="flex items-center justify-between p-2">
                     <div className="flex items-center justify-between p-2 w-full"> 
                      <h1 className="text-black dark:text-white text-3xl font-bold">Your Cart</h1>
-                     <IoCloseCircleOutline onClick={()=>navigate('/')} className="cursor-pointer text-2xl dark:text-white text-gray-500 hover:text-gray-800"/>
+                     <IoCloseCircleOutline onClick={()=> setOpenCheckout(false)} className="cursor-pointer text-2xl dark:text-white text-gray-500 hover:text-gray-800"/>
                     </div>
                 </div>
                 <p className="text-slate-400 text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit asperiores modi</p>
             </div>
-            <div className="container flex flex-col items-center gap-5">
+            <div className="container flex flex-col items-center gap-5 text-sm sm:text-lg">
                 {/* Checkout Items will be displayed here */}
                 { <table className="border-black rounded-lg shadow-md w-auto">
                         <thead>
                             <tr className="text-left">
-                                <th className="px-4 py-2">Product</th>
-                                <th className="px-4 py-2">Price</th>
-                                <th className="px-4 py-2">Quantity</th>
-                                <th className="px-4 py-2">Total</th>
+                                <th className="px-2 sm:px-4  py-2">Product</th>
+                                <th className="px-2 sm:px-4 py-2">Price</th>
+                                <th className="px-2 sm:px-4 py-2">Quantity</th>
+                                <th className="px-2 sm:px-4 py-2">Total</th>
                             </tr>
                         </thead>
                         <tbody>

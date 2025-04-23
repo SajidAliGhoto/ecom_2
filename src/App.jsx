@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './Pages/HomePage.jsx';
 import ProductDetails from './Pages/ProductDetailPage.jsx';
 import CartPage from './Pages/CartPage.jsx';
-import CheckoutPage from './Pages/CheckoutPage.jsx';
 import ProductsPage from './Pages/ProductsPage.jsx';
 function App() {
     React.useEffect(()=>{
@@ -72,13 +71,6 @@ function App() {
                 <Route path='/cart' 
                     element={<CartPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart}
                     clearCart={clearCart} getTotalPrice={getTotalPrice}
-                    />}
-                />
-
-                <Route path='/checkout' 
-                    element={<CheckoutPage cartItems={cartItems} getTotalPrice={getTotalPrice}
-                    removeFromCart={removeFromCart}
-                    clearCart={clearCart}
                     />}
                 />
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
-import ProductsData from "../../data/products.js";
+import ProductsData from "../../data/TopProducts.js";
 
 const TopProducts = ({handleOrderPopup,addToCart,orderId,setOrderId,navigate})=>{
     

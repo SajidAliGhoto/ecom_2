@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa";
 
-import ProductsData from "../../data/ratedProducts.js";
+import ProductsData from "../../data/Products.js";
 import { useParams } from "react-router-dom";
   
 const Products = ({addToCart ,orderId,setOrderId,navigate}) => {
