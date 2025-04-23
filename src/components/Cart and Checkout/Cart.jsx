@@ -20,7 +20,7 @@ const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
                 <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center gap-5 overflow-y-auto max-h-[65vh]"
                 >
                     {/* Cart Items will be displayed here */}
-                    { console.log(cartItems.length) }
+                    { console.log(cartItems) }
                     {cartItems.length > 0 ? cartItems.map((item) => (
                         <div className="flex flex-col items-center justify-center gap-5">
 
