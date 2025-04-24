@@ -12,12 +12,12 @@ const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
     :
     (
 
-            <div id="cart" className="container flex flex-col items-center justify-center w-fit bg-white backdrop-blur-sm dark:bg-gray-800 p-3 rounded-lg shadow-lg pt-10">
+            <div id="cart" className="container flex flex-col items-center justify-center w-full bg-white backdrop-blur-sm dark:bg-gray-800 p-3 rounded-lg overflow-x-auto shadow-lg pt-10">
 
                 <div className=" text-center mb-10 w-full">
                     <div className="flex items-center justify-between p-2">
                         
-                        <h1 className="text-black dark:text-white text-3xl font-bold">Your Cart</h1>
+                        <h1 className="text-black dark:text-white md:text-3xl text-xl font-bold">Your Cart</h1>
                         <IoCloseCircleOutline onClick={()=> navigate('/')} className="cursor-pointer text-2xl dark:text-white text-gray-500 hover:text-gray-800"/>
                     </div>
                     <p className="text-slate-400 text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit asperiores modi</p>
@@ -27,7 +27,7 @@ const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
                     {/* Cart Items will be displayed here */}
                     { console.log(cartItems) }
                     {cartItems.length > 0 ? cartItems.map((item) => (
-                        <div className="flex flex-col items-center justify-center gap-5">
+                        <div className="flex flex-col items-center justify-center text-black dark:text-white gap-5">
 
                             <div key={item.id} className="flex items-center justify-center gap-5 border px-5 border-primary">
                                 <img src={item.img} alt={item.title} className="w-20 h-20 rounded-full" />
@@ -55,7 +55,7 @@ const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
                     }
                     
                 </div>
-                <div className="flex items-center justify-between gap-5 py-5">
+                <div className="flex items-center justify-between md:gap-5 py-5 text-sm gap-2 md:text-lg">
                         <button className='bg-primary transition-all duration-200 text-white py-1 px-4 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap'
                             onClick={()=> navigate('/')}>
                             Continue Shopping</button>
