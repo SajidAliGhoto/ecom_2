@@ -12,7 +12,7 @@ const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
     :
     (
 
-            <div id="cart" className="container flex flex-col items-center justify-center w-full bg-white backdrop-blur-sm dark:bg-gray-800 p-3 rounded-lg overflow-x-auto shadow-lg pt-10">
+            <div id="cart" className="container flex flex-col items-center justify-center w-full bg-white backdrop-blur-sm dark:bg-gray-800 p-3 md:rounded-lg overflow-x-auto shadow-lg pt-10">
 
                 <div className=" text-center mb-10 w-full">
                     <div className="flex items-center justify-between p-2">
