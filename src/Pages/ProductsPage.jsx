@@ -13,6 +13,12 @@ const ProductsPage = ({addToCart})=>{
     const navigate = useNavigate();
 
     const [filterType,setFilterType] = useState("");
+    const [showDropDown,setShowDropDown] = useState(false);
+
+    const handleFilterOPtion =(type)=>{
+        setFilterType(type);
+        setShowDropDown(false);
+    }
 
     // using useMemo to only recalculate when dependencies change
     var filteredProducts = useMemo(()=>{
@@ -38,66 +44,73 @@ const ProductsPage = ({addToCart})=>{
     
     },[filterType,allProducts] );
 
-    console.log(filteredProducts)
-
+    console.log(showDropDown);
     return(
+        
         <div>
             <div className="container pt-10">
-                <li className='group relative cursor-pointer'>
-                    <a className='flex items-center gap-[2px]'>
-                        
-                        <span>
-                            <FaCaretDown className='transition-all duration-200 group-hover:rotate-180'/>
-                        </span>
-                    </a>
-                    <div className='absolute z-[9999] hidden group-hover:block rounded-md w-[200px]
-                        bg-white py-2 px-2 text-black shadow-md
-                    '>
+                <li className='group relative cursor-pointer list-none'>
+                    <button className=' w-[12rem] bg-primary/40 hover:bg-amber-100 p-1 rounded-md'
+                    onClick={()=> { setShowDropDown(true) ; console.log(showDropDown);}}
+                    >
+
+                        {filterType
+                        ? `Filter: ${
+                              filterType === "NameAsc"
+                                  ? "Name [A-Z]"
+                                  : filterType === "NameDesc"
+                                  ? "Name [Z-A]"
+                                  : filterType === "PriceLow"
+                                  ? "Price: Low to High"
+                                  : filterType === "PriceHigh"
+                                  ? "Price: High to Low"
+                                  : "Filter By"
+                          }`
+                        : "Filter By"}
+
+                    </button>
+                    {showDropDown && (
+                    <div 
+                    className={`absolute z-[9999] ${
+                        showDropDown ? "block" : "hidden"
+                      } rounded-md w-[12rem] bg-white py-2 px-2 text-black shadow-md`}
+                    >
                         <ul>
-                             <li >
+                             <li>
                                 <button 
-                                  onClick={() => setFilterType("NameAsc")}
-                                  className='block w-full hover:bg-amber-100 p-1 rounded-md'
+                                  onClick={() => handleFilterOPtion("NameAsc")}
+                                  className='block w-[10rem] hover:bg-amber-100 p-1 rounded-md'
                                 >
                                   Name [A-Z]
                                 </button>
                                 <button 
-                                  onClick={() => setFilterType("NameDesc")}
-                                  className='block w-full hover:bg-amber-100 p-1 rounded-md'
+                                  onClick={() => handleFilterOPtion("NameDesc")}
+                                  className='block w-[10rem] hover:bg-amber-100 p-1 rounded-md'
                                 >
                                   Name [Z-A]
                                 </button>
                                 <button 
-                                  onClick={() => setFilterType("PriceLow")}
-                                  className='block w-full hover:bg-amber-100 p-1 rounded-md'
+                                  onClick={() => handleFilterOPtion("PriceLow")}
+                                  className='block w-[10rem] hover:bg-amber-100 p-1 rounded-md'
                                 >
                                   Price: Low to High
                                 </button>
                                 <button 
-                                  onClick={() => setFilterType("PriceHigh")}
-                                  className='block w-full hover:bg-amber-100 p-1 rounded-md'
+                                  onClick={() =>  handleFilterOPtion("PriceHigh")}
+                                  className='block w-[10rem] hover:bg-amber-100 p-1 rounded-md'
                                 >
                                   Price: High to Low
                                 </button>
    
                             </li>
                         </ul>
-                    </div>    
+                    </div> 
+                    )
+                    }   
                 </li>
 
-                <select className="w-25 p-1.5 bg-primary/40 border-white shadow-md rounded-md"
-                    onChange={(e)=> setFilterType(e.target.value)}
-                >
-                    <option className="bg-white border-1 border-primary hover:bg-primary/40" value={""}>Filter by</option>
-                    <option value={"NameAsc"}></option>
-                    <option value={"NameDesc"}>Name {"[Z-A]"}</option>
-                    <option value={"PriceLow"}>Price: Low to High</option>
-                    <option value={"PriceHigh"}>Price: High to Low</option>
-                    {/* <option value={"Newest"}>Date Newest First</option>
-                    <option value={"Oldest"}>Date Oldest First</option> */}
-                </select>
-                
             </div>
+
              <div className="container flex flex-col items-center gap-5 mt-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-content-center gap-5">
                     {/* Products List  */}
