@@ -26,6 +26,7 @@ function App() {
     }
     const [isLoggedIn, setLoggedIn] = React.useState(true);
     const [cartItems, setCartItems] = React.useState([]);
+
     const addToCart = (item) => {
         setCartItems((prevCartItems ) => {
             const existingItem = prevCartItems.find(cartItem => cartItem.id === item.id);
@@ -56,7 +57,7 @@ function App() {
         return cartItems.reduce((total, item) => total + item.price*item.quantity, 0);
     }
 
-    console.log(getTotalPrice);
+    
    
     return (
         <>
@@ -64,6 +65,7 @@ function App() {
         <Navbar 
             handleOrderPopup={handleOrderPopup}
             isLoggedIn={isLoggedIn}
+            cartItems={cartItems}
         />
             <Routes>
                 <Route path='/' element={<HomePage addToCart={addToCart}/>} />

@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import ProductsData from "../../data/TopProducts.js";
-import RatedProductsData from "../../data/Products.js"
+import allProducts from "../../data/productCatalog.js";
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 const ProductDetails = ({ addToCart }) => {
     
     const { id } = useParams();
-    var product = ProductsData.find((product) => product.id === parseInt(id));
-    var ratedProduct = null;
-    if (!product) {
-        ratedProduct = RatedProductsData.find((product) => product.id === parseInt(id));   
-    }else{
-        ratedProduct = product
-    }
+    var allproducts = Object.values(allProducts).flat();
+    var ratedProduct = allproducts.find((product) => product.id === parseInt(id));
+    
     
     // console.log(product)
     if(ratedProduct){
