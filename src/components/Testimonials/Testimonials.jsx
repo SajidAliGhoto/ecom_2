@@ -1,4 +1,4 @@
-import { space } from 'postcss/lib/list';
+
 import React from 'react';
 import Slider from 'react-slick';
 

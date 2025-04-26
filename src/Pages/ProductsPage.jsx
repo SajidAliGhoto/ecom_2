@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import {FaCaretDown} from 'react-icons/fa';
-import { Link } from "react-scroll";
+import { FaFilter } from "react-icons/fa";
 import ProductCatalog from "../data/productCatalog";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
@@ -26,13 +25,13 @@ const ProductsPage = ({addToCart})=>{
 
             switch(filterType) {
                 case "NameAsc":
-                    return CopyProducts.sort( (a,b)=> a.title.localeCompare(b.title) );
+                    return [ ...CopyProducts].sort( (a,b)=> a.title.localeCompare(b.title) );
                 case "NameDesc":
-                    return CopyProducts.sort( (a,b)=> b.title.localeCompare(a.title) );
+                    return [ ...CopyProducts].sort( (a,b)=> b.title.localeCompare(a.title) );
                 case "PriceLow":
-                    return CopyProducts.sort((a,b) => a.price-b.price);
+                    return [ ...CopyProducts].sort((a,b) => a.price-b.price);
                 case "PriceHigh":
-                    return CopyProducts.sort((a,b) => b.price-a.price);
+                    return [ ...CopyProducts].sort((a,b) => b.price-a.price);
                 /*case "Newest":    bcx we dont have date on our products
                     return new Date(a.)
                 case "Oldest"
@@ -50,7 +49,7 @@ const ProductsPage = ({addToCart})=>{
         <div>
             <div className="container pt-10">
                 <li className='group relative cursor-pointer list-none'>
-                    <button className=' w-[12rem] bg-primary/40 hover:bg-amber-100 p-1 rounded-md'
+                    <button className='flex items-center justify-around w-[12rem] bg-primary/40 hover:bg-amber-100 p-1 rounded-md'
                     onClick={()=> { setShowDropDown(true) ; console.log(showDropDown);}}
                     >
 
@@ -67,7 +66,7 @@ const ProductsPage = ({addToCart})=>{
                                   : "Filter By"
                           }`
                         : "Filter By"}
-
+                        <FaFilter></FaFilter>
                     </button>
                     {showDropDown && (
                     <div 
@@ -114,9 +113,9 @@ const ProductsPage = ({addToCart})=>{
              <div className="container flex flex-col items-center gap-5 mt-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-content-center gap-5">
                     {/* Products List  */}
-                    {filteredProducts.map((item) => (
-                        
-                        <div key={item.id} className="flex flex-col items-center justify-center border-2 md:w-max w-80 shadow-lg rounded-lg p-2 gap-2">
+                    {filteredProducts.map((item,index) => (
+                        //Added index as a key instead of item id for correct render order , so that filter works properly
+                        <div key={index} className="flex flex-col- items-center justify-center border-2 md:w-max w-80 shadow-lg rounded-lg p-2 gap-2">
                             <img src={item.img}
                                 className="w-[15rem] h-[12rem] "
                             ></img>
