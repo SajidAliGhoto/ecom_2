@@ -20,14 +20,14 @@ const TopProducts = ({handleOrderPopup,addToCart,orderId,setOrderId,navigate})=>
         </div>
 
         {/* Body Section */}
-        <div className="container mx-auto">
-                <div className="grid place-items-center gap-[5rem]"
-                    style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}
+        <div className="container">
+                <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-y-20"
+                    //style={{row-gap: '5rem' }}
                 >
                     {/* Products List  */}
                     { ProductsData.map((data)=>(
                         <div key={data.id} className="
-                        max-h-[300px] max-w-[300px]
+                        md:pt-1 sm:pt-20 sm:pb-3 pt-20 sm:max-h-[300px] sm:max-w-[300px] w-full
                         rounded-2xl bg-white dark:bg-gray-700 hover:bg-black/80
                         hover:text-white dark:hover:bg-primary shadow-xl relative duration-[300] group flex flex-col items-center justify-center
                         "
@@ -42,7 +42,7 @@ const TopProducts = ({handleOrderPopup,addToCart,orderId,setOrderId,navigate})=>
                             alt={data.title}    
                             />
                             </div>
-                            <div style={{marginTop: '-70px'}} >
+                            <div className="md:mt-[-5rem] mt-[-6rem]" >
                                 <div className="py-4 text-center flex flex-col items-center">
                                     <div className="flex items-center justify-center gap-1">
                                         <FaStar className="text-yellow-400"/>
