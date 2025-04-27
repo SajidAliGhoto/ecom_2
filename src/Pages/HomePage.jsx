@@ -16,13 +16,18 @@ const HomePage = ({addToCart}) => {
     const [orderId,setOrderId] = useState(null);
     const navigate = useNavigate();
 
+    const showDetails = (id) => {
+        navigate(`/product/${id}`);
+        window.scroll({top:0,behavior:'smooth'});
+    }
+
     return (
         <div id="home">
             <Hero/>
-            <TopProducts addToCart={addToCart} orderId={orderId} setOrderId={setOrderId} navigate={navigate}/>
+            <TopProducts addToCart={addToCart} orderId={orderId} setOrderId={setOrderId} navigate={navigate} showDetails={showDetails}/>
             <Banner/>
             <Subscribe/>
-            <Products addToCart={addToCart} orderId={orderId} setOrderId={setOrderId} navigate={navigate}/>
+            <Products addToCart={addToCart} orderId={orderId} setOrderId={setOrderId} navigate={navigate} showDetails={showDetails}/>
             <Testimonials/>
             <Footer/>
             <OrderNowPopup/>

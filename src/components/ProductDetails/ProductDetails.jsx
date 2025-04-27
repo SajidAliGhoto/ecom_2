@@ -16,9 +16,9 @@ const ProductDetails = ({ addToCart }) => {
     }
     const navigate = useNavigate();
     const showDetails = (id) => {
-        console.log("id=",id);
         navigate(`/product/${id}`);
-    };
+        window.scroll({top:0,behavior:'smooth'});
+    }
 
     var settings = {
         dots: true,
@@ -76,19 +76,23 @@ const ProductDetails = ({ addToCart }) => {
             <div className="flex flex-col sm:flex-row items-center w-full justify-center gap-2 pt-10 ]">
                 <div className="flex items-center justify-center w-full sm:w-[50%]">
                 <img className="w-[20rem] h-fit p-2 shadow-2xl"
+                    data-aos="zoom-out"
+                    data-aos-delay="50000"
+                    data-aos-duration='500'
+                    data-aos-once="true"
                     src={ratedProduct.img}>
                 </img>
                 </div>
 
                 <div className="sm:w-[50%] w-full h-full flex flex-col items-left gap-2 text-sm sm:text-lg sm:gap-5">
-                    <h2 className="text-2xl font-bold">{ratedProduct.title}</h2>
-                    <p className="text-lg text-gray-700 dark:text-white">{ratedProduct.description}</p>
-                    <p>Color: {ratedProduct.color}</p>
-                    <p className="text-xl font-semibold text-gray-900 dark:text-white">Price: ${ratedProduct.price}</p>
-                    <p>Discount: {ratedProduct.discountPercentage}%</p>
+                    <h2 className="text-2xl font-bold" data-aos="fade-up">{ratedProduct.title}</h2>
+                    <p className="text-lg text-gray-700 dark:text-white" data-aos="fade-up">{ratedProduct.description}</p>
+                    <p data-aos="fade-up">Color: {ratedProduct.color}</p>
+                    <p className="text-xl font-semibold text-gray-900 dark:text-white" data-aos="fade-up">Price: ${ratedProduct.price}</p>
+                    <p data-aos="fade-up">Discount: {ratedProduct.discountPercentage}%</p>
                     <button
                         onClick={() => addToCart(ratedProduct)}
-                        className="bg-primary text-white py-2 px-4 rounded-full hover:bg-gray-100 hover:text-primary transition-all duration-200"
+                       data-aos="fade-up"  className="bg-primary text-white py-2 px-4 rounded-full hover:bg-gray-100 hover:text-primary transition-all duration-200"
                     >
                         Add to Cart
                     </button>
@@ -99,7 +103,7 @@ const ProductDetails = ({ addToCart }) => {
             {/* // Reviews on this Product */}
             <div className="flex flex-col sm:w-full w-[99vw] items-center justify-center sm:p-10">
                 {/* Header */}
-                <div className="py-2 border-b border-gray-500">
+                <div className="py-2 border-b border-gray-500" data-aos="zoom-out">
                     <div className="flex items-center justify-between">
                         <h1 className="text-2xl font-semibold dark:text-white">Reviews</h1>
                         <div className="flex gap-5">
@@ -162,7 +166,7 @@ const ProductDetails = ({ addToCart }) => {
                 <div className="sm:container w-full flex-col pt-10">
                     {/*Related Products Carousel Header */}
                     <div>
-                        <h1 className="text-center font-bold text-2xl">Related Products</h1>
+                        <h1 className="text-center font-bold text-2xl" data-aos="fade-up">Related Products</h1>
                     </div>
 
                     {/* Related Products Carousel Body */}
@@ -179,7 +183,7 @@ const ProductDetails = ({ addToCart }) => {
                             e.currentTarget.parentElement.setAttribute("aria-hidden", "false");
                         }}
                           >
-                            <div className='relative py-8 px-6 flex flex-col items-center justify-center gap-4 rounded-lg bg-primary/10 shadow-lg shadow-black/20 mx-4'
+                            <div  data-aos="fade-up" className='relative py-8 px-6 flex flex-col items-center justify-center gap-4 rounded-lg bg-primary/10 shadow-lg shadow-black/20 mx-4'
                                 onClick={(e)=> {
                                     e.stopPropagation();
                                     showDetails(data.id)}}

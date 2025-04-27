@@ -3,12 +3,10 @@ import { FaStar } from "react-icons/fa";
 import ProductsData from "../../data/Products.js";
 import { useParams } from "react-router-dom";
   
-const Products = ({addToCart ,orderId,setOrderId,navigate}) => {
+const Products = ({addToCart ,orderId,setOrderId,navigate,showDetails}) => {
   
   const id = useParams();
-  const showDetails = (id) => {
-    navigate(`/product/${id}`);
-  };
+  
     return (
         <div id="top-selling-products" className="pt-10 dark:bg-gray-800 dark:text-white bg-white min-h-screen">
             {/* Header Section */}

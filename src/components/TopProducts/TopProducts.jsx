@@ -3,12 +3,10 @@ import { FaStar } from "react-icons/fa";
 
 import ProductsData from "../../data/TopProducts.js";
 
-const TopProducts = ({handleOrderPopup,addToCart,orderId,setOrderId,navigate})=>{
+const TopProducts = ({handleOrderPopup,addToCart,orderId,setOrderId,navigate,showDetails})=>{
     
 
-    const showDetails = (id) => {
-        navigate(`/product/${id}`);
-    }
+    
     
     return <div id="top-rated" className=" dark:bg-gray-800 dark:text-white pb-10 pt-10 bg-white min-h-screen">
 
