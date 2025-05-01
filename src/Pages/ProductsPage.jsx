@@ -132,16 +132,16 @@ const ProductsPage = ({addToCart})=>{
 
                             <div className="flex items-center justify-between w-full">
                             <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
-                                onClick={()=> addToCart(item)}
+                                onClick={(e)=> {e.stopPropagation();addToCart(item)}}
                             >Add To Cart</button>
                             <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
-                                onClick={()=> {addToCart(item); console.log(item); navigate('/cart')} }
+                                onClick={(e)=> {addToCart(item); e.stopPropagation(); navigate('/cart')} }
                             >Buy Now</button>
                             </div>
                             :
 
                             <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
-                                onClick={()=> setOrderId(item.id)}
+                                onClick={(e)=> {e.stopPropagation(); setOrderId(item.id)}}
                             >Order Now</button>
                             
                             }

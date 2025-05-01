@@ -61,7 +61,7 @@ const ProductDetails = ({ addToCart }) => {
     const relatedProducts = Array.from(
         new Map(
             allproducts
-                .filter((product) => product.title.includes(keyword))
+                .filter((product) => product.title.includes(keyword) && product.id != ratedProduct.id)
                 .map((product) => [product.id, product])
         ).values()
     );
@@ -90,12 +90,18 @@ const ProductDetails = ({ addToCart }) => {
                     <p data-aos="fade-up">Color: {ratedProduct.color}</p>
                     <p className="text-xl font-semibold text-gray-900 dark:text-white" data-aos="fade-up">Price: ${ratedProduct.price}</p>
                     <p data-aos="fade-up">Discount: {ratedProduct.discountPercentage}%</p>
-                    <button
-                        onClick={() => addToCart(ratedProduct)}
-                       data-aos="fade-up"  className="bg-primary text-white py-2 px-4 rounded-full hover:bg-gray-100 hover:text-primary transition-all duration-200"
-                    >
-                        Add to Cart
-                    </button>
+                    <div className="w-full flex items-start justify-center gap-5">
+                        <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                            onClick={()=> addToCart(item) }
+                            data-aos="fade-up"
+                        >Add to Cart</button>
+                        
+                        
+                        <button className='px-3 bg-primary transition-all duration-200 text-white py-1 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap '
+                            onClick={()=> {addToCart(ratedProduct); navigate('/cart')}}
+                            data-aos="fade-up"
+                        >Buy Now</button>
+                    </div>
                 </div>
                 
             </div>
@@ -162,12 +168,12 @@ const ProductDetails = ({ addToCart }) => {
                     
                 )}
              
-
+                {relatedProducts.length>1 && (
                 <div className="sm:container w-full flex-col pt-10">
                     {/*Related Products Carousel Header */}
                     <div>
                         <h1 className="text-center font-bold text-2xl" data-aos="fade-up">Related Products</h1>
-                    </div>
+                    
 
                     {/* Related Products Carousel Body */}
                     <div>
@@ -176,9 +182,9 @@ const ProductDetails = ({ addToCart }) => {
                         <Slider {...settings}
                            
                         >
-                        {relatedProducts &&
+                        {
                         relatedProducts.map((data) => (
-                          <div key={data.id} className='py-6'
+                          <div key={data.id} className='py-5'
                           onFocus={(e) => {
                             e.currentTarget.parentElement.setAttribute("aria-hidden", "false");
                         }}
@@ -204,9 +210,12 @@ const ProductDetails = ({ addToCart }) => {
                           </div>
                         ))}
                         </Slider>
-                    </div>    
-                </div>
+                    </div>
 
+                </div>    
+                
+                )}
+            </div>
             </div>
         );
     }else{
