@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Checkout from "./Checkout.jsx";
-const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
+const Cart = ({cartItems,addToCart,removeFromCart,clearCart,getTotalPrice}) => {
 
     const navigate = useNavigate();
 
     const [openCheckout,setOpenCheckout] = useState(false);
     
-    return  openCheckout ? (  <Checkout setOpenCheckout={setOpenCheckout} cartItems={cartItems}/>) 
+    return  openCheckout ? (  <Checkout setOpenCheckout={setOpenCheckout} cartItems={cartItems} getTotalPrice={getTotalPrice}/>) 
     :
     (
 
@@ -27,9 +27,9 @@ const Cart = ({cartItems,addToCart,removeFromCart,clearCart}) => {
                     {/* Cart Items will be displayed here */}
                     { console.log(cartItems) }
                     {cartItems.length > 0 ? cartItems.map((item) => (
-                        <div className="flex flex-col items-center justify-center text-black dark:text-white gap-5">
+                        <div key={item.id}  className="flex flex-col items-center justify-center text-black dark:text-white gap-5">
 
-                            <div key={item.id} className="flex items-center justify-center gap-5 border px-5 border-primary">
+                            <div className="flex items-center justify-center gap-5 border px-5 border-primary">
                                 <img src={item.img} alt={item.title} className="w-20 h-20 rounded-full" />
                                 <div className="flex flex-col items-center justify-between gap-5">
                                     <h1>{item.title}</h1>

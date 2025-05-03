@@ -1,5 +1,6 @@
 import {FaCartShopping} from "react-icons/fa6";
 import {FaCaretDown} from 'react-icons/fa';
+import { CiUser } from "react-icons/ci";
 import DarkMode from "./DarkMode.jsx";
 import Logo from "../../assets/logo.png"; 
 // {When you import the logo as a module, the bundler (Vite) processes the image and ensures the correct path is used in the final build. This way, the logo will load correctly both locally and on the deployed site.}
@@ -65,6 +66,10 @@ const Navbar=({handleOrderPopup,isLoggedIn})=> {
     const [search,setSearch] = useState("");
     const [suggestions,setSuggestions] = useState([]);
 
+    const handleLogout=()=>{
+        localStorage.removeItem("authToken");
+        navigate('/');
+    }
     const handleSearch = (e) => {
         const query = e.target.value;
         setSearch(query);
@@ -188,7 +193,12 @@ const Navbar=({handleOrderPopup,isLoggedIn})=> {
                         <div>
                             <DarkMode></DarkMode>
                         </div>
-
+                        <div
+                            className="flex gap-1  overflow-y-auto group"    
+                        >
+                            <CiUser className="group-hover:hidden"></CiUser>
+                            <p onClick={handleLogout} className="bg-white p-1 hidden group-hover:block cursor-pointer shadow-md fix top-10 right-3">Logout</p>
+                        </div>
                     </div>
                 </div>
             </div>

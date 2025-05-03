@@ -7,6 +7,7 @@ import Subscribe from '../components/Subscribe/Subscribe.jsx';
 import Testimonials from '../components/Testimonials/Testimonials.jsx';
 import Footer from '../components/Footer/Footer.jsx';
 import OrderNowPopup from '../components/Popup/OrderNowPopup.jsx';
+import Login from "../components/Auth/Login.jsx";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

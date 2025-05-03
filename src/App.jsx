@@ -8,6 +8,10 @@ import HomePage from './Pages/HomePage.jsx';
 import ProductDetails from './Pages/ProductDetailPage.jsx';
 import CartPage from './Pages/CartPage.jsx';
 import ProductsPage from './Pages/ProductsPage.jsx';
+import Login from './components/Auth/Login.jsx';
+import Register from './components/Auth/Register.jsx';
+import ForgotPassword from './components/Auth/ForgotPassword.jsx'
+import ProtectedRoute from './components/Auth/ProtectedRoute.jsx';
 function App() {
     React.useEffect(()=>{
         AOS.init({
@@ -61,7 +65,7 @@ function App() {
    
     return (
         <>
-        <Router>
+        
         <Navbar 
             handleOrderPopup={handleOrderPopup}
             isLoggedIn={isLoggedIn}
@@ -71,9 +75,13 @@ function App() {
                 <Route path='/' element={<HomePage addToCart={addToCart}/>} />
                 <Route path='/product/:id' element={<ProductDetails addToCart={addToCart}/>} />
                 <Route path='/cart' 
-                    element={<CartPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart}
-                    clearCart={clearCart} getTotalPrice={getTotalPrice}
-                    />}
+                    element={
+                    <ProtectedRoute>
+                        <CartPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart}
+                        clearCart={clearCart} getTotalPrice={getTotalPrice}
+                        />
+                    </ProtectedRoute>
+                    }
                 />
 
                 <Route path='/products'
@@ -82,9 +90,15 @@ function App() {
                         />}
                 />
 
+                <Route path='/login' element={<Login/>}/>
+
+                <Route path='/register' element={<Register/>}/>
+
+                <Route path='/forgotpwd' element={<ForgotPassword/>}/>
+
             </Routes>
         
-            </Router>
+            
         </>
     )
 }

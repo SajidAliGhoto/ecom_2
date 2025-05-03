@@ -1,9 +1,19 @@
 import React from 'react';
 import { IoCloseCircleOutline } from "react-icons/io5";
+// import { useAuth } from '../Auth/AuthContext'; // Ensure useAuth is exported properly
+import { useNavigate } from 'react-router-dom'; // Added useNavigate
 
-const Checkout = ({ cartItems =[] , setOpenCheckout}) => {
+const Checkout = ({ cartItems =[] , setOpenCheckout,getTotalPrice}) => {
     // adding default value to cartItems to avoid undefined error cartItems =[]
 
+        
+
+        const navigate = useNavigate();
+
+        const handleProceedPayment = ()=>{
+            
+            navigate('/login');
+        }
    
         return (
         
@@ -40,7 +50,7 @@ const Checkout = ({ cartItems =[] , setOpenCheckout}) => {
                             ))}
                             <tr className="border-b border-gray-200">
                                 <td colSpan="3" className="px-4 py-2 font-bold">Total</td>
-                                {/* <td className="px-4 py-2 font-bold">${getTotalPrice().toFixed(2)}</td> */}
+                                <td className="px-4 py-2 font-bold">${getTotalPrice().toFixed(2)}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -48,7 +58,7 @@ const Checkout = ({ cartItems =[] , setOpenCheckout}) => {
                 <button
                 className=' bg-primary transition-all duration-200 text-white py-1 px-4
                 rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap border-2 hover:border-primary/10 shadow-lg'
-                
+                onClick={()=>handleProceedPayment()}
                 >Proceed Payment</button>   
             </div>
             
