@@ -3,8 +3,9 @@ import { FaFilter } from "react-icons/fa";
 import ProductCatalog from "../data/productCatalog";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-const ProductsPage = ({addToCart})=>{
-
+import { useCart } from "../components/Cart and Checkout/CartContext";
+const ProductsPage = ()=>{
+    const {addToCart} = useCart();
     // Combine all product categories into a single array
     const allProducts = Object.values(ProductCatalog).flat();
 

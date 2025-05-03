@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Checkout from "./Checkout.jsx";
-const Cart = ({cartItems,addToCart,removeFromCart,clearCart,getTotalPrice}) => {
+import { useCart } from "./CartContext.jsx";
+const Cart = () => {
 
+    const {cartItems,addToCart,removeFromCart,clearCart} = useCart();
     const navigate = useNavigate();
 
     const [openCheckout,setOpenCheckout] = useState(false);
     
-    return  openCheckout ? (  <Checkout setOpenCheckout={setOpenCheckout} cartItems={cartItems} getTotalPrice={getTotalPrice}/>) 
+    return  openCheckout ? (  <Checkout setOpenCheckout={setOpenCheckout}/>) 
     :
     (
 

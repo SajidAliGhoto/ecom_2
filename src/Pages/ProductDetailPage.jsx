@@ -1,11 +1,11 @@
 import React from "react";
 import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
 
-const ProductDetailPage = ({addToCart}) => {
+const ProductDetailPage = () => {
      
 
     return (
-        <ProductDetails addToCart={addToCart}/>
+        <ProductDetails/>
     );
 }
 export default ProductDetailPage;

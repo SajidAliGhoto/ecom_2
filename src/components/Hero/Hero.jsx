@@ -3,6 +3,8 @@ import Image1 from '../../assets/hero/sale.png'
 import Image2 from '../../assets/hero/women.png'
 import Image3 from '../../assets/hero/shopping.png'
 import Slider from 'react-slick';
+import { useAuth } from '../Auth/AuthContext';
+import { useCart } from '../Cart and Checkout/CartContext';
 
     const ImageList = [
         {
@@ -36,7 +38,8 @@ import Slider from 'react-slick';
        arrows: false,
   };
 
-const Hero = ({handleOrderPopup}) => {
+const Hero = () => {
+    const {handleOrderNowBtn} = useCart();
     return(
         <div id='home' className=' relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex items-center justify-center
         dark:bg-gray-950 dark:text-white duration-200 z-10
@@ -80,7 +83,7 @@ const Hero = ({handleOrderPopup}) => {
                             <button
                             className='bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-200 text-white py-1 px-4
                                 rounded-full flex'
-                            onClick={() => handleOrderPopup()}
+                            onClick={() => handleOrderNowBtn()}
                             >
                                 Order Now
                             </button>

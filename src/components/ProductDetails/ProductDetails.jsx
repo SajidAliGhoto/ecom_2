@@ -4,8 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import {FaCaretUp} from 'react-icons/fa';
 import Slider from 'react-slick';
-const ProductDetails = ({ addToCart }) => {
-    
+import { useCart } from "../Cart and Checkout/CartContext.jsx";
+const ProductDetails = ( ) => {
+    const {addToCart} = useCart();
     const { id } = useParams();
     var allproducts = Object.values(allProducts).flat();
     var ratedProduct = allproducts.find((product) => product.id === parseInt(id));

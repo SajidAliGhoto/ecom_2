@@ -12,6 +12,8 @@ import Login from './components/Auth/Login.jsx';
 import Register from './components/Auth/Register.jsx';
 import ForgotPassword from './components/Auth/ForgotPassword.jsx'
 import ProtectedRoute from './components/Auth/ProtectedRoute.jsx';
+import { CartProvider } from './components/Cart and Checkout/CartContext.jsx';
+import { AuthProvider } from './components/Auth/AuthContext.jsx';
 function App() {
     React.useEffect(()=>{
         AOS.init({
@@ -24,81 +26,39 @@ function App() {
          AOS.refresh();     
     },[])
 
-    const [orderPopup, setOrderPopup] = React.useState(false);
-    const handleOrderPopup = () => {
-            setOrderPopup(!orderPopup);
-    }
-    const [isLoggedIn, setLoggedIn] = React.useState(true);
-    const [cartItems, setCartItems] = React.useState([]);
-
-    const addToCart = (item) => {
-        setCartItems((prevCartItems ) => {
-            const existingItem = prevCartItems.find(cartItem => cartItem.id === item.id);
-            if(existingItem){
-                return prevCartItems.map(cartItem => {
-                    return cartItem.id === item.id ? {...cartItem, quantity: cartItem.quantity + 1} : cartItem;
-                })
-            }else{
-                return [...prevCartItems, {...item,quantity: 1}];
-            }
-        })
-        
-    }
-    const removeFromCart = (item) => {
-        cartItems.length >0 && setCartItems(cartItems.filter(cartItem => cartItem.id !== item.id));
-        const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
-        if(existingItem.quantity > 1){
-            setCartItems(cartItems.map(cartItem => {
-                return cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity -1} : cartItem
-            }))
-        }else
-            setCartItems(cartItems.filter(cartItem => cartItem.id !== item.id));
-    }
-    const clearCart = () => {
-        setCartItems([]);
-    }
-    const getTotalPrice = () => {
-        return cartItems.reduce((total, item) => total + item.price*item.quantity, 0);
-    }
-
-    
    
     return (
         <>
-        
-        <Navbar 
-            handleOrderPopup={handleOrderPopup}
-            isLoggedIn={isLoggedIn}
-            cartItems={cartItems}
-        />
+        <AuthProvider>
+        <CartProvider>
+        <Navbar />
             <Routes>
-                <Route path='/' element={<HomePage addToCart={addToCart}/>} />
-                <Route path='/product/:id' element={<ProductDetails addToCart={addToCart}/>} />
+                
+                <Route path='/' element={<HomePage/>} />
+                <Route path='/product/:id' element={<ProductDetails />} />
                 <Route path='/cart' 
                     element={
                     <ProtectedRoute>
-                        <CartPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart}
-                        clearCart={clearCart} getTotalPrice={getTotalPrice}
-                        />
+                       
+                            <CartPage />
+                        
                     </ProtectedRoute>
                     }
                 />
 
-                <Route path='/products'
-                        element={<ProductsPage
-                        addToCart={addToCart}
-                        />}
-                />
-
-                <Route path='/login' element={<Login/>}/>
+                <Route path='/products' element={<ProductsPage/> } />
+                
+                
+                
+                <Route path='/login' element={ <Login/>}/>
 
                 <Route path='/register' element={<Register/>}/>
 
                 <Route path='/forgotpwd' element={<ForgotPassword/>}/>
-
+                
             </Routes>
-        
-            
+            </CartProvider>
+            </AuthProvider>
         </>
     )
 }

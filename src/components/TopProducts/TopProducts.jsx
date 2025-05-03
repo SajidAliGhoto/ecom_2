@@ -2,10 +2,12 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 
 import ProductsData from "../../data/TopProducts.js";
+import { useCart } from "../Cart and Checkout/CartContext.jsx";
+import { useAuth } from "../Auth/AuthContext.jsx";
 
-const TopProducts = ({handleOrderPopup,addToCart,orderId,setOrderId,navigate,showDetails})=>{
+const TopProducts = ({orderId,setOrderId,navigate,showDetails})=>{
     
-
+    const {addToCart} = useCart();
     
     
     return <div id="top-rated" className=" dark:bg-gray-800 dark:text-white pb-10 pt-10 bg-white min-h-screen">

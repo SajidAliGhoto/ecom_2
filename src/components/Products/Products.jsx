@@ -2,11 +2,12 @@ import { FaStar } from "react-icons/fa";
 
 import ProductsData from "../../data/Products.js";
 import { useParams } from "react-router-dom";
+import { useCart } from "../Cart and Checkout/CartContext.jsx";
   
-const Products = ({addToCart ,orderId,setOrderId,navigate,showDetails}) => {
+const Products = ({orderId,setOrderId,navigate,showDetails}) => {
   
   const id = useParams();
-  
+  const {addToCart} = useCart();
     return (
         <div id="top-selling-products" className="pt-10 dark:bg-gray-800 dark:text-white bg-white min-h-screen">
             {/* Header Section */}

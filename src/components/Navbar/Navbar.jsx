@@ -8,7 +8,9 @@ import { Link as ScrollLink } from "react-scroll"
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../Auth/AuthContext.jsx";
 import ProductCatalog from "../../data/productCatalog.js";
+import { useCart } from "../Cart and Checkout/CartContext.jsx";
 
 const Manu = [
     {
@@ -57,11 +59,15 @@ const DropdownLinks = [
 ];
 
 
-const Navbar=({handleOrderPopup,isLoggedIn})=> {
+const Navbar=()=> {
 
     const products = Object.values(ProductCatalog).flat();
     const navigate = useNavigate();
     const location = useLocation();
+
+    const {isLoggedIn} = useAuth();
+    const {handleOrderNowBtn} = useCart();
+    
 
     const [search,setSearch] = useState("");
     const [suggestions,setSuggestions] = useState([]);
@@ -181,8 +187,7 @@ const Navbar=({handleOrderPopup,isLoggedIn})=> {
                         <button
                             className='bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-200 text-white py-1 px-4
                      rounded-full flex items-center justify-center gap-3 group'
-                        onClick={
-                            isLoggedIn ? ()=> navigate('cart'): () => handleOrderPopup}
+                        onClick={handleOrderNowBtn}
                         >
                             <span className='group-hover:block hidden transition-all duration-200'
                             

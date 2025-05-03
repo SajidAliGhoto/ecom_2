@@ -2,17 +2,15 @@ import React from 'react';
 import { IoCloseCircleOutline } from "react-icons/io5";
 // import { useAuth } from '../Auth/AuthContext'; // Ensure useAuth is exported properly
 import { useNavigate } from 'react-router-dom'; // Added useNavigate
+import { useCart } from './CartContext';
 
-const Checkout = ({ cartItems =[] , setOpenCheckout,getTotalPrice}) => {
+const Checkout = ({setOpenCheckout}) => {
     // adding default value to cartItems to avoid undefined error cartItems =[]
 
-        
-
-        const navigate = useNavigate();
+        const {cartItems,getTotalPrice} = useCart();
 
         const handleProceedPayment = ()=>{
-            
-            navigate('/login');
+            alert("Payement process logic not defined.")
         }
    
         return (
