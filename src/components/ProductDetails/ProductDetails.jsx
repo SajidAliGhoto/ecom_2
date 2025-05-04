@@ -1,20 +1,52 @@
 import React, { useState } from "react";
-import allProducts from "../../data/productCatalog.js";
+import AllProducts from "../../data/productCatalog.js";
 import { useNavigate, useParams } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
 import {FaCaretUp} from 'react-icons/fa';
 import Slider from 'react-slick';
 import { useCart } from "../Cart and Checkout/CartContext.jsx";
+import StarRating from "./StarRating.jsx";
 const ProductDetails = ( ) => {
     const {addToCart} = useCart();
     const { id } = useParams();
-    var allproducts = Object.values(allProducts).flat();
-    var ratedProduct = allproducts.find((product) => product.id === parseInt(id));
+    const productId = parseInt(id,10);
+    var allproducts = Object.values(AllProducts).flat();
+    var ratedProduct = AllProducts.find((product) => product.id === productId);
+    console.log("Product to find: ",productId)
+    console.log("rated product: ",AllProducts.filter((product)=> product.id === productId));
+    console.log(AllProducts);
     
     const [showReviews,setShowReviews] = useState(false);
     const handleShowReviews = ()=>{
         setShowReviews(prevState => !prevState);
     }
+    const [reviewText,setReviewText] = useState("");
+    const [reviews,setReviews] = useState(ratedProduct?.reviews || []);
+    const [ReviewDone,setReviewDone] = useState(false);
+
+    const handleReviewSubmit=(e)=>{
+        e.preventDefault();
+        if(!reviewText.trim()) return;
+
+        const newReview = {
+            reviewerName: 'Anonymous',
+            comment: reviewText,
+            img: "https://via.placeholder.com/150",
+
+            
+        }
+        // Update the reviews state
+        setReviews((prevReviews) => [...prevReviews, newReview]);
+        setReviewText(""); // Clear the textarea
+        setReviewDone(true); // Show the thank-you message
+
+        setTimeout(()=>{
+            setReviewDone(false);
+        },3000)
+        
+    }
+    React.useEffect(()=>{
+        console.log("Reviews",reviews.length);
+    },[reviews]);    
     const navigate = useNavigate();
     const showDetails = (id) => {
         navigate(`/product/${id}`);
@@ -58,7 +90,7 @@ const ProductDetails = ( ) => {
           },
         ],
     };
-    const keyword = ratedProduct.title.split(" ")[0];
+    const keyword = ratedProduct?.title.split(" ")[0];
     const relatedProducts = Array.from(
         new Map(
             allproducts
@@ -67,14 +99,12 @@ const ProductDetails = ( ) => {
         ).values()
     );
     
-    console.log(relatedProducts)
     if(ratedProduct){
-    
-        const [ReviewDone,setReviewDone] = useState(false);
+
         return (
-            <div className="container flex flex-col bg-white dark:bg-[#705227] dark:text-white min-h-screen" >
+            <div className="flex flex-col bg-white dark:bg-[#705227] dark:text-white min-h-screen" >
     
-            <div className="flex flex-col sm:flex-row items-center w-full justify-center gap-2 pt-10 ]">
+            <div className="container flex flex-col sm:flex-row items-center w-full justify-center gap-2 pt-10 ]">
                 <div className="flex items-center justify-center w-full sm:w-[50%]">
                 <img className="w-[20rem] h-fit p-2 shadow-2xl"
                     data-aos="zoom-out"
@@ -108,14 +138,14 @@ const ProductDetails = ( ) => {
             </div>
 
             {/* // Reviews on this Product */}
-            <div className="flex flex-col sm:w-full w-[99vw] items-center justify-center sm:p-10">
+            <div className="container flex flex-col sm:w-full w-[99vw] max-w-[90vw] items-center justify-center sm:p-10">
                 {/* Header */}
                 <div className="py-2 border-b border-gray-500" data-aos="zoom-out">
                     <div className="flex items-center justify-between">
                         <h1 className="text-2xl font-semibold dark:text-white">Reviews</h1>
                         <div className="flex gap-5">
                             <span className="text-lg font-bold dark:text-white flex items-center gap-5">{ratedProduct.rating} 
-                            <FaStar className="text-yellow-400"/>
+                                <StarRating rating={ratedProduct.rating}/>
                             </span>
                             <div className="group" onClick={()=>handleShowReviews()}>
                                 <FaCaretUp className="h-5 transition-all duration-200 group-hover:rotate-180"/>
@@ -129,11 +159,11 @@ const ProductDetails = ( ) => {
                    {/* use map function bcx reviews is an array of objects not a single object */}
                 
                 {showReviews && (
-                    <div id = 'reviewsBody'>
+                    <div id = 'reviewsBody' className="max-w-[90vw]">
                 
-                     <div>
+                     <div id="reviewContainer" className="flex flex-col gap-5">
  
-                         {ratedProduct.reviews.map((review,index)=>{
+                         {reviews.map((review,index)=>{
                           return (
                           <div key={index} className="flex items-center mt-5 border border-gray-500 dark:border-white rounded-lg p-2">   
                              <img className="w-20 h-20 rounded-full shadow-lg" src={review.img} alt="reviewer_image"></img>
@@ -150,11 +180,11 @@ const ProductDetails = ( ) => {
                      {!ReviewDone ?
                         <div className="flex w-[45rem] pt-5">
                          
-                             <form className="w-[50vw] mt-5 border border-gray-500 dark:border-white rounded-lg p-2">
-                             <textarea type="text" className="rounded-md p-5 bg-gray-300 dark:bg-gray-500 dark:text-white w-full" 
+                             <form onSubmit={handleReviewSubmit} className="w-[50vw] mt-5 border border-gray-500 dark:border-white rounded-lg p-2">
+                             <textarea onChange={(e)=>setReviewText(e.target.value)} type="text" className="rounded-md p-5 bg-gray-300 dark:bg-gray-500 dark:text-white w-full" 
                                  placeholder="Write your reviews here"
                              ></textarea>
-                             <button onClick={()=> setReviewDone(true)} type="submit" className='px-3 bg-primary transition-all duration-200 text-white py-1
+                             <button type="submit" className='px-3 bg-primary transition-all duration-200 text-white py-1
                                      rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap ' >Submit</button>
                              </form>
                         </div>
@@ -220,6 +250,7 @@ const ProductDetails = ( ) => {
             </div>
         );
     }else{
+        console.error(`Product with ID ${id} not found.`);
         return <div>Product not found</div>;
     }
 }

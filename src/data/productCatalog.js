@@ -26,7 +26,7 @@ import reviewer8 from "../assets/reviewer/reviewer8.jpg";
 import reviewer9 from "../assets/reviewer/reviewer9.jpg";
 
 // TopProducts and RatedProductsData (DO NOT MODIFY)
-import TopProducts from "./TopProducts";
+import TopProducts from "./Products";
 import RatedProductsData from "./TopProducts";
 
 // ProductCatalog transformed to TopProduct structure
