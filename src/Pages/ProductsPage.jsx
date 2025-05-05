@@ -11,10 +11,7 @@ const ProductsPage = ()=>{
 
     const [orderId,setOrderId] = useState(null);
     const navigate = useNavigate();
-    const showDetails = (id) => {
-        navigate(`/product/${id}`);
-        window.scroll({top:0,behavior:'smooth'});
-    }
+   const {showProductDetails} = useCart();
 
     const [filterType,setFilterType] = useState("");
     const [showDropDown,setShowDropDown] = useState(false);
@@ -120,7 +117,7 @@ const ProductsPage = ()=>{
                     {/* Products List  */}
                     {filteredProducts.map((item,index) => (
                         //Added index as a key instead of item id for correct render order , so that filter works properly
-                        <div key={index} onClick={()=>showDetails(item.id)} className="flex flex-col items-center justify-center border-2 md:w-max w-80 shadow-lg rounded-lg p-2 gap-2">
+                        <div key={index} onClick={()=>showProductDetails(item.id)} className="cursor-pointer flex flex-col items-center justify-center border-2 md:w-max w-80 shadow-lg rounded-lg p-2 gap-2">
                             <img src={item.img}
                                 className="w-[15rem] h-[12rem] "
                             ></img>

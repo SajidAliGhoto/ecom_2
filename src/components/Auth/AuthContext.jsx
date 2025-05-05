@@ -30,7 +30,7 @@ export const AuthProvider = ({children})=>{
         navigate('/');
     }
     return(
-        <AuthContext.Provider value={{isLoggedIn,setIsLoggedIn,login}}>
+        <AuthContext.Provider value={{isLoggedIn,setIsLoggedIn,Login,Logout,formData,setFormData}}>
             {children}
         </AuthContext.Provider>
     )
