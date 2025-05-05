@@ -132,7 +132,7 @@ const Navbar=()=> {
                             <img src={Logo} alt="Logo"
                                  className='w-10'
                             />
-                            Shopsy
+                            <div className="hidden sm:block">Shopsy</div>
                         </a>
                     </div>
                     {/*search bar*/}

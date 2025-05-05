@@ -104,7 +104,7 @@ const ProductDetails = ( ) => {
         return (
             <div className="flex flex-col bg-white dark:bg-[#705227] dark:text-white min-h-screen" >
     
-            <div className="container flex flex-col sm:flex-row items-center w-full justify-center gap-2 pt-10 ]">
+            <div className="sm:container flex flex-col sm:flex-row items-center w-full justify-center gap-2 pt-10 ]">
                 <div className="flex items-center justify-center w-full sm:w-[50%]">
                 <img className="w-[20rem] h-fit p-2 shadow-2xl"
                     data-aos="zoom-out"
@@ -115,9 +115,9 @@ const ProductDetails = ( ) => {
                 </img>
                 </div>
 
-                <div className="sm:w-[50%] w-full h-full flex flex-col items-left gap-2 text-sm sm:text-lg sm:gap-5">
+                <div className="sm:w-[50%] w-full h-full flex flex-col px-5 sm:items-start items-center gap-2 text-sm sm:text-lg sm:gap-5">
                     <h2 className="text-2xl font-bold" data-aos="fade-up">{ratedProduct.title}</h2>
-                    <p className="text-lg text-gray-700 dark:text-white" data-aos="fade-up">{ratedProduct.description}</p>
+                    <p className="text-lg text-gray-700 dark:text-white text-center" data-aos="fade-up">{ratedProduct.description}</p>
                     <p data-aos="fade-up">Color: {ratedProduct.color}</p>
                     <p className="text-xl font-semibold text-gray-900 dark:text-white" data-aos="fade-up">Price: ${ratedProduct.price}</p>
                     <p data-aos="fade-up">Discount: {ratedProduct.discountPercentage}%</p>
@@ -138,7 +138,7 @@ const ProductDetails = ( ) => {
             </div>
 
             {/* // Reviews on this Product */}
-            <div className="container flex flex-col sm:w-full w-[99vw] max-w-[90vw] items-center justify-center sm:p-10">
+            <div className="sm:container flex flex-col sm:w-full w-[99vw] max-w-[90vw] items-center justify-center sm:p-10">
                 {/* Header */}
                 <div className="py-2 border-b border-gray-500" data-aos="zoom-out">
                     <div className="flex items-center justify-between">

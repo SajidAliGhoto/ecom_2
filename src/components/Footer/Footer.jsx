@@ -45,9 +45,9 @@ const Footer = () => {
       <div className='container' data-aos="zoom-in" data-aos-duration="1000">
        
         {/* Company Details */}
-        <div className='grid grid-cols-3 gap-4 pt-10 pb-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4 pt-10 sm:pb-10'>
         
-        <div className='py-8 px-4'>
+        <div className='sm:py-8 px-4'>
             <div className='flex items-center justify-left gap-4'>
             <img src={footer_logo} alt="Logo" className='w-12 h-12' />
             <h1 className='text-3xl font-bold'>Shopsy</h1>
@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
         {/* Footer Links */}
         <div className='col-span-2'>
-        <div className='grid grid-cols-3 grid-rows-1 gap-4'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 sm:grid-rows-1 gap-4'>
             <div className='py-8 px-4'>
                 <div>
                     <h1 className='text-xl sm:text-xl sm:text-left text-justify font-bold mb-3 '>Important Links</h1>
@@ -84,7 +84,7 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className='py-8 px-4'>
+            <div className='sm:py-8 px-4'>
                 <div className='flex items-center justify-center gap-4'>
                     <FaFacebook className='w-8 h-8'/>
                     <FaInstagram className='w-8 h-8'/>
