@@ -17,7 +17,7 @@ const BannerImg = {
 const Suscribe = () => {
 
   return (
-    <div className=" dark:bg-gray-800 dark:text-white bg-white">
+    <div className=" dark:bg-gray-800 dark:text-white bg-white sm:mt-0 mt-5">
     <div data-aos='zoom-in'
     className=" bg-gray-100"
       style={BannerImg}

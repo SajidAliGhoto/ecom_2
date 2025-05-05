@@ -65,7 +65,7 @@ const Navbar=()=> {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const {isLoggedIn} = useAuth();
+    const {setIsLoggedIn} = useAuth();
     const {handleOrderNowBtn} = useCart();
     
 
@@ -74,6 +74,8 @@ const Navbar=()=> {
 
     const handleLogout=()=>{
         localStorage.removeItem("authToken");
+        localStorage.removeItem("cartItems");
+        setIsLoggedIn(false);
         navigate('/');
     }
     const handleSearch = (e) => {

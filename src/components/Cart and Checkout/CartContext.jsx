@@ -6,8 +6,20 @@ const CartContext = createContext();
 
 
 export const CartProvider = ({children})=>{
-    const [cartItems, setCartItems] = useState([]);
+    
     const navigate = useNavigate();
+
+    const [cartItems, setCartItems] = useState(() => {
+        // Load cart items from localStorage on initialization
+        const savedCart = localStorage.getItem("cartItems");
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+
+    useEffect(() => {
+        // Save cart items to localStorage whenever they change
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }, [cartItems]);
+    
     const handleOrderNowBtn = (isLoggedIn)=>{
         if(isLoggedIn)
             navigate('/cart');
