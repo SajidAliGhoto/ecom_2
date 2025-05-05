@@ -1,31 +1,18 @@
 import { useNavigate } from "react-router-dom"; // Added useNavigate
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { useAuth } from "./AuthContext";
 
 const Login = ()=>{
     
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        email:"",
-        password:"",
-    })
+    const {formData,setFormData,Login} = useAuth();
 
     const handleChange=(event)=>{
         const {name,value} = event.target;
         setFormData ( { ...formData , [name]:value});
         
     }
-    console.log(formData);
-    const handleLogin=()=>{
-        if(!formData.email || !formData.password){
-            alert("Please enter email and password");
-            return null;
-        }
-
-        localStorage.setItem("authToken",JSON.stringify(formData));
-        navigate('/');
-    }
-
     
 
     return(
@@ -44,7 +31,7 @@ const Login = ()=>{
                     <input type="password" placeholder="Password" onChange={handleChange} value={formData.password} name="password" className="bg-white dark:bg-gray-600 border border-gray-300 p-1 w-[15rem] rounded-full" required/>
                     <button type="submit" className=' bg-primary transition-all duration-200 text-white py-1 px-4
                         rounded-full flex hover:bg-gray-100 hover:text-primary text-nowrap !important'
-                        onClick={handleLogin}
+                        onClick={Login}
                     >Login</button>
                 </form>
                 <div className="flex items-center justify-center flex-row gap-1">

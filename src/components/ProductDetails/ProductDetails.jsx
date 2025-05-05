@@ -48,10 +48,8 @@ const ProductDetails = ( ) => {
         console.log("Reviews",reviews.length);
     },[reviews]);    
     const navigate = useNavigate();
-    const showDetails = (id) => {
-        navigate(`/product/${id}`);
-        window.scroll({top:0,behavior:'smooth'});
-    }
+    
+    const {showProductDetails} = useCart();
 
     var settings = {
         dots: true,
@@ -223,7 +221,7 @@ const ProductDetails = ( ) => {
                             <div  data-aos="fade-up" className='relative py-8 px-6 flex flex-col items-center justify-center gap-4 rounded-lg bg-primary/10 shadow-lg shadow-black/20 mx-4'
                                 onClick={(e)=> {
                                     e.stopPropagation();
-                                    showDetails(data.id)}}
+                                    showProductDetails(data.id)}}
                             >
                                 
                                 <div>

@@ -9,11 +9,26 @@ const AuthContext = createContext();
 export const AuthProvider = ({children})=>{
     const [isLoggedIn,setIsLoggedIn] = useState(false);
 
-    
-    const login =()=>{
+    const [formData, setFormData] = useState({
+        email:"",
+        password:"",
+    })
+    const Login=()=>{
+        if(!formData.email || !formData.password){
+            alert("Please enter email and password");
+            return null;
+        }
 
+        localStorage.setItem("authToken",JSON.stringify(formData));
+        navigate('/');
     }
 
+    const Logout=()=>{
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("cartItems");
+        setIsLoggedIn(false);
+        navigate('/');
+    }
     return(
         <AuthContext.Provider value={{isLoggedIn,setIsLoggedIn,login}}>
             {children}

@@ -5,9 +5,9 @@ import ProductsData from "../../data/TopProducts.js";
 import { useCart } from "../Cart and Checkout/CartContext.jsx";
 import { useAuth } from "../Auth/AuthContext.jsx";
 
-const TopProducts = ({orderId,setOrderId,navigate,showDetails})=>{
+const TopProducts = ({orderId,setOrderId,navigate})=>{
     
-    const {addToCart} = useCart();
+    const {addToCart,showProductDetails} = useCart();
     
     
     return <div id="top-rated" className=" dark:bg-gray-800 dark:text-white pb-10 pt-10 bg-white min-h-screen">
@@ -33,7 +33,7 @@ const TopProducts = ({orderId,setOrderId,navigate,showDetails})=>{
                         "
                             data-aos='fade-up'
                             data-aos-delay={data.aosDelay}
-                            onClick={()=>showDetails(data.id)}
+                            onClick={()=>showProductDetails(data.id)}
                         >
                             <div>
                             <img className="max-w-[140px] block max-auto transform -translate-y-20 

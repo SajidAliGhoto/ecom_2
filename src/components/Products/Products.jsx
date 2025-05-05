@@ -4,10 +4,10 @@ import ProductsData from "../../data/Products.js";
 import { useParams } from "react-router-dom";
 import { useCart } from "../Cart and Checkout/CartContext.jsx";
   
-const Products = ({orderId,setOrderId,navigate,showDetails}) => {
+const Products = ({orderId,setOrderId,navigate}) => {
   
   const id = useParams();
-  const {addToCart} = useCart();
+  const {addToCart,showProductDetails} = useCart();
     return (
         <div id="top-selling-products" className="pt-10 dark:bg-gray-800 dark:text-white bg-white min-h-screen">
             {/* Header Section */}
@@ -25,7 +25,7 @@ const Products = ({orderId,setOrderId,navigate,showDetails}) => {
                         <div key={data.id} className="space-y-3 cursor-pointer"
                             data-aos='fade-up'
                             data-aos-delay={data.aosDelay}
-                            onClick={()=>showDetails(data.id)}
+                            onClick={()=>showProductDetails(data.id)}
                         >
                             <img className="h-[220px] w-[150] object-cover rounded-md"
                             src={data.img}

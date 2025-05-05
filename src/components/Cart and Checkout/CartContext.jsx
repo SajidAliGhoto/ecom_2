@@ -19,7 +19,7 @@ export const CartProvider = ({children})=>{
         // Save cart items to localStorage whenever they change
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
-    
+
     const handleOrderNowBtn = (isLoggedIn)=>{
         if(isLoggedIn)
             navigate('/cart');
@@ -27,6 +27,10 @@ export const CartProvider = ({children})=>{
             navigate('/login');
     }
 
+    const showProductDetails = (id) => {
+        navigate(`/product/${id}`);
+        window.scroll({top:0,behavior:'smooth'});
+    };
     useEffect(() => {
         console.log("Cart items updated:", cartItems);
     }, [cartItems]);

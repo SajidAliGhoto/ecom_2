@@ -65,19 +65,14 @@ const Navbar=()=> {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const {setIsLoggedIn} = useAuth();
-    const {handleOrderNowBtn} = useCart();
+    const {Logout} = useAuth();
+    const {handleOrderNowBtn,showProductDetails} = useCart();
     
 
     const [search,setSearch] = useState("");
     const [suggestions,setSuggestions] = useState([]);
 
-    const handleLogout=()=>{
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("cartItems");
-        setIsLoggedIn(false);
-        navigate('/');
-    }
+    
     const handleSearch = (e) => {
         const query = e.target.value;
         setSearch(query);
@@ -103,9 +98,6 @@ const Navbar=()=> {
         setSuggestions(matches);
     };
 
-    const showDetails = (id) => {
-        navigate(`/product/${id}`);
-    };
 
     const handleNavClick = (link) => {
         if (location.pathname !== "/") {
@@ -170,7 +162,7 @@ const Navbar=()=> {
                             <div className="absolute top-10 right-99 bg-white text-black px-4 z-[9999] rounded-md">
                                 {suggestions.map((item) => (
                                     <a key={item.id} className="block hover:text-amber-500"
-                                        onClick={()=> showDetails(item.id)}
+                                        onClick={()=> showProductDetails(item.id)}
                                     >
                                         {item.title}
                                     </a>
@@ -204,7 +196,7 @@ const Navbar=()=> {
                             className="flex gap-1  overflow-y-auto group"    
                         >
                             <CiUser className="group-hover:hidden"></CiUser>
-                            <p onClick={handleLogout} className="bg-white p-1 hidden group-hover:block cursor-pointer shadow-md fix top-10 right-3">Logout</p>
+                            <p onClick={Logout} className="bg-white p-1 hidden group-hover:block cursor-pointer shadow-md fix top-10 right-3">Logout</p>
                         </div>
                     </div>
                 </div>
